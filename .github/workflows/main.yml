@@ -28,3 +28,11 @@ jobs:
           rsync -avz --delete \
             -e "ssh -p 22" \
             ./ neonnext2@162.248.101.196:~/public_html
+
+      - name: Install dependencies and build on VPS
+        run: |
+          ssh -p 22 neonnext2@162.248.101.196 "
+            cd ~/public_html && \
+            npm install --legacy-peer-deps && \
+            npm run build
+          "
