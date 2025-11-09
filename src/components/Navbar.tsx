@@ -64,9 +64,9 @@ const Navbar = () => {
 
   return (
     <>
-      <nav ref={navbarRef} className="bg-transparent p-4 flex justify-between items-center fixed top-0 left-0 w-full z-20">
+      <nav ref={navbarRef} className="backdrop-blur-md bg-black/20 border-b border-white/10 p-4 flex justify-between items-center fixed top-0 left-0 w-full z-20">
         <div className="flex items-center space-x-2">
-          <img src="favico.png" alt="Neon Next Generation Logo" className="h-8" />
+          <img src="/favico.png" alt="Neon Next Generation Logo" className="h-8" />
           <span className="text-white text-lg font-semibold">Neon</span>
         </div>
 
@@ -77,14 +77,13 @@ const Navbar = () => {
         <div className="navbar-links md:flex items-center space-x-8 text-sm font-semibold uppercase hidden md:flex">
           <a href="/" className="text-gray-300 hover:text-white transition-colors duration-200">Home</a>
           <a href="https://hosting.neonnextgeneration.com/" className="text-gray-300 hover:text-white transition-colors duration-200">Hosting</a>
-          <a href="domains.html" className="text-gray-300 hover:text-white transition-colors duration-200">Domains</a>
-          <a href="index.html#pricing" className="text-gray-300 hover:text-white transition-colors duration-200">Pricing</a>
-          <a href="latest.html" className="text-gray-300 hover:text-white transition-colors duration-200">Latest News</a>
+          <a href="/#pricing" className="text-gray-300 hover:text-white transition-colors duration-200">Pricing</a>
+        
         </div>
 
         <div className="navbar-actions flex items-center space-x-2">
-          <a href="https://platform.neonnextgeneration.com/login" className="text-gray-300 hover:text-white font-semibold transition-colors duration-200">LOGIN</a>
-          <a href="https://platform.neonnextgeneration.com/login" className="text-gray-300 hover:text-white rounded-full p-1 border border-gray-600 hover:border-white transition-colors duration-200">
+          <a href="https://billing.neonnextgeneration.com/login" className="text-gray-300 hover:text-white font-semibold transition-colors duration-200">LOGIN</a>
+          <a href="https://billing.neonnextgeneration.com/login" className="text-gray-300 hover:text-white rounded-full p-1 border border-gray-600 hover:border-white transition-colors duration-200">
             <Plus className="w-4 h-4" />
           </a>
         </div>
@@ -99,10 +98,8 @@ const Navbar = () => {
         <div className="menu-links text-sm font-semibold uppercase flex flex-col gap-4 text-center">
           <a href="/" className="text-gray-300 hover:text-white transition-colors duration-200 py-3 px-4 rounded-md hover:bg-[#2a2a2a]" onClick={handleLinkClick}>Home</a>
           <a href="https://hosting.neonnextgeneration.com/" className="text-gray-300 hover:text-white transition-colors duration-200 py-3 px-4 rounded-md hover:bg-[#2a2a2a]" onClick={handleLinkClick}>Hosting</a>
-          <a href="domains.html" className="text-gray-300 hover:text-white transition-colors duration-200 py-3 px-4 rounded-md hover:bg-[#2a2a2a]" onClick={handleLinkClick}>Domains</a>
-          <a href="index.html#pricing" className="text-gray-300 hover:text-white transition-colors duration-200 py-3 px-4 rounded-md hover:bg-[#2a2a2a]" onClick={handleLinkClick}>Pricing</a>
-          <a href="latest.html" className="text-gray-300 hover:text-white transition-colors duration-200 py-3 px-4 rounded-md hover:bg-[#2a2a2a]" onClick={handleLinkClick}>Latest News</a>
-        </div>
+          <a href="/#pricing" className="text-gray-300 hover:text-white transition-colors duration-200 py-3 px-4 rounded-md hover:bg-[#2a2a2a]" onClick={handleLinkClick}>Pricing</a>
+             </div>
       </dialog>
     </>
   );

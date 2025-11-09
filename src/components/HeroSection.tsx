@@ -10,6 +10,7 @@ import {
   Server,
   ShieldCheck
 } from 'lucide-react';
+import { heroData } from '../lib/hero-constants';
 
 const HeroSection = () => {
   useEffect(() => {
@@ -79,64 +80,47 @@ const HeroSection = () => {
     };
   }, []);
 
-  const handleGetProPlan = () => {
-    window.open("https://billing.neonnextgeneration.com/products/hosting-plans/pro-plan", "_blank");
-  };
-
-  const handleExploreVPN = () => {
-    window.open("https://platform.neonnextgeneration.com", "_blank");
+  const handleButtonClick = (url: string) => {
+    window.open(url, "_blank");
   };
 
   return (
-    <section className="hero-section relative min-h-screen grid grid-cols-1 md:grid-cols-2 items-center justify-items-center overflow-hidden py-16 px-4">
+    <section className="hero-section relative min-h-screen grid grid-cols-1 md:grid-cols-2 items-center justify-items-center overflow-hidden py-16 px-4 backdrop-blur-md bg-black/20">
       <canvas id="starfield-canvas" className="absolute top-0 left-0 w-full h-full z-0"></canvas>
 
       <div className="hero-left z-20 text-center md:text-left px-4">
         <span className="animate-on-scroll fade-up mb-4 bg-gradient-to-r font-bold from-purple-500 inline-block px-4 py-2 rounded-full text-sm text-white to-pink-500">
-          MOST POPULAR CHOICE
+          {heroData.badge}
         </span>
 
         <h1 className="animate-on-scroll fade-up font-extrabold leading-tight lg:text-5xl mb-2 md:text-4xl text-2xl">
-          Choose Our <span className="gradient-text-hosting">Pro Plan</span> for Growing Businesses
+          {heroData.titlePrefix}<span className="gradient-text-hosting">{heroData.titleHighlight}</span>{heroData.titleSuffix}
         </h1>
 
         <div className="flex animate-on-scroll fade-up justify-center font-extrabold items-baseline mb-4 md:justify-start text-4xl">
-          $<span>8</span><span className="text-gray-400 text-lg">/month</span>
-          <span className="mx-2 text-gray-500">or</span>$<span>110</span><span className="text-gray-400 text-lg">/year</span>
+          $<span>{heroData.priceMonthly}</span><span className="text-gray-400 text-lg">/month</span>
+          <span className="mx-2 text-gray-500">or</span>$<span>{heroData.priceYearly}</span><span className="text-gray-400 text-lg">/year</span>
         </div>
 
         <ul className="w-full text-gray-300 text-left animate-on-scroll fade-up max-w-md mb-4 md:mx-0 mx-auto space-y-1">
-          <li className="flex items-center">
-            <Check className="h-5 mr-2 w-5 text-green-400" />
-            25GB NVMe Storage
-          </li>
-          <li className="flex items-center">
-            <Check className="h-5 mr-2 w-5 text-green-400" />
-            Priority Support
-          </li>
-          <li className="flex items-center">
-            <Check className="h-5 mr-2 w-5 text-green-400" />
-            Early Developer Features
-          </li>
-          <li className="flex items-center">
-            <Check className="h-5 mr-2 w-5 text-green-400" />
-            Access to VPN Services
-          </li>
+          {heroData.features.map((feature, index) => (
+            <li key={index} className="flex items-center">
+              <Check className="h-5 mr-2 w-5 text-green-400" />
+              {feature}
+            </li>
+          ))}
         </ul>
 
         <div className="flex animate-on-scroll fade-up flex-col md:justify-start mt-4 sm:flex-row sm:space-x-3 sm:space-y-0 space-y-2">
-          <button
-            className="text-white rounded-full font-semibold btn-gradient duration-300 px-8 py-3 transition-all"
-            onClick={handleGetProPlan}
-          >
-            Get Pro Plan
-          </button>
-          <button
-            className="btn-bland duration-300 font-semibold px-8 py-3 rounded-full transition-all"
-            onClick={handleExploreVPN}
-          >
-            Explore VPN
-          </button>
+          {heroData.buttons.map((button, index) => (
+            <button
+              key={index}
+              className={`rounded-full font-semibold duration-300 px-8 py-3 transition-all ${index === 0 ? 'text-white btn-gradient' : 'btn-bland'}`}
+              onClick={() => handleButtonClick(button.url)}
+            >
+              {button.text}
+            </button>
+          ))}
         </div>
       </div>
 
